@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Emil Joseph G. Magracia — ESG Research & Sustainability</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #1a4a3a;
+      --green-light: #e8f4ef;
+      --green-mid: #2d6b54;
+      --stone: #f7f5f0;
+      --ink: #1c1c1a;
+      --muted: #6b6b67;
+      --border: #e2dfd8;
+      --white: #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--stone);
+      color: var(--ink);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .serif { font-family: 'DM Serif Display', serif; }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 2.5rem;
+      border-bottom: 0.5px solid var(--border);
+      background: var(--stone);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-name { font-size: 14px; font-weight: 500; letter-spacing: 0.02em; }
+    .nav-links { display: flex; gap: 1.75rem; }
+    .nav-links a {
+      font-size: 13px;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--ink); }
+
+    /* HERO */
+    .hero {
+      padding: 5.5rem 2.5rem 4.5rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .hero-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      color: var(--green-mid);
+      text-transform: uppercase;
+      font-weight: 500;
+      margin-bottom: 1.25rem;
+    }
+    .hero-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.8rem, 6vw, 4.2rem);
+      line-height: 1.1;
+      font-weight: 400;
+      margin-bottom: 1.5rem;
+    }
+    .hero-name em { font-style: italic; color: var(--green-mid); }
+    .hero-bio {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 580px;
+      line-height: 1.85;
+      margin-bottom: 2rem;
+    }
+    .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag {
+      font-size: 12px;
+      padding: 5px 13px;
+      border: 0.5px solid var(--border);
+      border-radius: 20px;
+      color: var(--muted);
+      background: var(--white);
+    }
+
+    /* DIVIDER */
+    .divider { height: 0.5px; background: var(--border); margin: 0 2.5rem; }
+
+    /* SECTIONS */
+    section { max-width: 900px; margin: 0 auto; padding: 4rem 2.5rem; }
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--green-mid);
+      font-weight: 500;
+      margin-bottom: 2.25rem;
+    }
+
+    /* ABOUT */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3.5rem;
+      align-items: start;
+    }
+    .about-text { font-size: 1rem; color: var(--muted); line-height: 1.9; }
+    .about-text p + p { margin-top: 1.1rem; }
+    .about-stats { display: flex; flex-direction: column; gap: 1.1rem; }
+    .stat { border-top: 0.5px solid var(--border); padding-top: 1.1rem; }
+    .stat-num {
+      font-size: 2.2rem;
+      font-weight: 300;
+      color: var(--green);
+      line-height: 1;
+      font-family: 'DM Serif Display', serif;
+    }
+    .stat-label { font-size: 12px; color: var(--muted); margin-top: 5px; }
+
+    /* CERTIFICATIONS */
+    .certs-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .cert-card {
+      background: var(--white);
+      border: 0.5px solid var(--border);
+      border-radius: 10px;
+      padding: 1.1rem 1.25rem;
+    }
+    .cert-issuer {
+      font-size: 11px;
+      color: var(--green-mid);
+      font-weight: 500;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      margin-bottom: 7px;
+    }
+    .cert-name {
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--ink);
+      line-height: 1.4;
+    }
+    .cert-year { font-size: 12px; color: var(--muted); margin-top: 5px; }
+
+    /* EXPERIENCE */
+    .exp-item {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 2rem;
+      padding: 1.75rem 0;
+      border-top: 0.5px solid var(--border);
+    }
+    .exp-date { font-size: 12px; color: var(--muted); padding-top: 3px; line-height: 1.7; }
+    .exp-role { font-size: 15px; font-weight: 500; color: var(--ink); margin-bottom: 3px; }
+    .exp-org { font-size: 13px; color: var(--green-mid); margin-bottom: 10px; font-weight: 500; }
+    .exp-desc { font-size: 13.5px; color: var(--muted); line-height: 1.8; }
+
+    /* EDUCATION */
+    .edu-item {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 2rem;
+      padding: 1.75rem 0;
+      border-top: 0.5px solid var(--border);
+    }
+    .edu-date { font-size: 12px; color: var(--muted); padding-top: 3px; }
+    .edu-degree { font-size: 15px; font-weight: 500; color: var(--ink); margin-bottom: 3px; }
+    .edu-school { font-size: 13px; color: var(--green-mid); margin-bottom: 8px; font-weight: 500; }
+    .edu-detail { font-size: 13px; color: var(--muted); line-height: 1.7; }
+
+    /* SKILLS */
+    .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+    .skill-group-label {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 12px;
+      padding-bottom: 9px;
+      border-bottom: 0.5px solid var(--border);
+    }
+    .skill-pills { display: flex; flex-wrap: wrap; gap: 7px; }
+    .skill-pill {
+      font-size: 12px;
+      padding: 5px 11px;
+      background: var(--green-light);
+      color: var(--green);
+      border-radius: 4px;
+      font-weight: 400;
+    }
+
+    /* CONTACT */
+    .contact-bar {
+      background: var(--green);
+      border-radius: 14px;
+      padding: 2.75rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+    }
+    .contact-left h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.6rem;
+      color: #fff;
+      font-weight: 400;
+      margin-bottom: 5px;
+    }
+    .contact-left p { font-size: 13px; color: rgba(255,255,255,0.6); }
+    .contact-links { display: flex; gap: 10px; flex-wrap: wrap; }
+    .contact-link {
+      font-size: 13px;
+      padding: 9px 18px;
+      border: 0.5px solid rgba(255,255,255,0.35);
+      border-radius: 7px;
+      color: #fff;
+      text-decoration: none;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+    .contact-link:hover { background: rgba(255,255,255,0.12); }
+
+    footer {
+      text-align: center;
+      padding: 2.5rem;
+      font-size: 12px;
+      color: var(--muted);
+      border-top: 0.5px solid var(--border);
+      margin-top: 2rem;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 680px) {
+      nav { padding: 1rem 1.25rem; }
+      .nav-links { gap: 1rem; }
+      .hero { padding: 3rem 1.25rem 2.5rem; }
+      section { padding: 2.5rem 1.25rem; }
+      .divider { margin: 0 1.25rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .certs-grid { grid-template-columns: 1fr; }
+      .exp-item, .edu-item { grid-template-columns: 1fr; gap: 0.5rem; }
+      .skills-grid { grid-template-columns: 1fr; gap: 1.75rem; }
+      .contact-bar { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <span class="nav-name">Emil Joseph G. Magracia</span>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <p class="hero-eyebrow">ESG Research · Stewardship · Sustainability Reporting</p>
+    <h1 class="hero-name">Turning <em>data into</em><br>meaningful action.</h1>
+    <p class="hero-bio">Life Sciences graduate with a foundation in research, data analysis, and regulatory-compliant documentation — building a career at the intersection of ESG research, sustainability reporting, and responsible business.</p>
+    <div class="hero-tags">
+      <span class="tag">ESG Research</span>
+      <span class="tag">CSRD / ESRS</span>
+      <span class="tag">GRI Standards</span>
+      <span class="tag">Pharmacovigilance</span>
+      <span class="tag">Data Validation</span>
+      <span class="tag">Scientific Writing</span>
+      <span class="tag">Stakeholder Engagement</span>
+      <span class="tag">Sustainability Communications</span>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <p class="section-label">About</p>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I'm a Biology graduate from the Polytechnic University of the Philippines (President's Lister) with hands-on experience in research data validation, scientific literature review, and regulatory-compliant reporting.</p>
+        <p>My work spans institutional research settings where I developed a sharp eye for accuracy, consistency, and evidence-based documentation — skills I'm now channeling into ESG research, sustainability reporting, and stewardship.</p>
+        <p>Beyond research, I hold certifications in ESG reporting frameworks including CSRD/ESRS, GRI-aligned ESG Blueprint, UN Sustainable Development Goals, and the Certificate in ESG Reporting from The ESG Institute — reflecting a genuine commitment to building expertise in sustainable finance and corporate accountability.</p>
+      </div>
+      <div class="about-stats">
+        <div class="stat">
+          <div class="stat-num">4</div>
+          <div class="stat-label">ESG & Sustainability Certifications</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">3</div>
+          <div class="stat-label">Concurrent research studies managed</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">&lt;1%</div>
+          <div class="stat-label">Error rate across 100+ validated records</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">92%</div>
+          <div class="stat-label">On-time milestone delivery rate</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- CERTIFICATIONS -->
+  <section id="certifications">
+    <p class="section-label">Certifications</p>
+    <div class="certs-grid">
+      <div class="cert-card">
+        <div class="cert-issuer">The ESG Institute</div>
+        <div class="cert-name">Certificate in ESG Reporting</div>
+        <div class="cert-year">2024</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-issuer">Education for Sustainability</div>
+        <div class="cert-name">ESG Blueprint: From Fundamentals to Implementation</div>
+        <div class="cert-year">2024</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-issuer">Position Green Academy</div>
+        <div class="cert-name">Corporate Sustainability Reporting Directive / European Sustainability Reporting Standards (CSRD/ESRS)</div>
+        <div class="cert-year">2024</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-issuer">Position Green Academy</div>
+        <div class="cert-name">United Nations Sustainable Development Goals (SDGs)</div>
+        <div class="cert-year">2024</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-issuer">Civil Service Commission · Philippines</div>
+        <div class="cert-name">Civil Service Eligibility — Professional Passer</div>
+        <div class="cert-year">2024</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <p class="section-label">Experience</p>
+
+    <div class="exp-item">
+      <div class="exp-date">Jan 2024 – Apr 2024</div>
+      <div>
+        <div class="exp-role">Researcher</div>
+        <div class="exp-org">Research Institute for Science and Technology, Manila</div>
+        <div class="exp-desc">Conducted data gathering, validation, and quality assurance across active studies, verifying entries against approved source documents and institutional reporting guidelines. Identified and escalated data discrepancies, maintained confidential participant records, and coordinated with internal stakeholders to ensure accurate and timely submission of all research outputs.</div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-date">Jun 2023 – May 2024</div>
+      <div>
+        <div class="exp-role">Research Associate</div>
+        <div class="exp-org">Polytechnic University of the Philippines, Manila</div>
+        <div class="exp-desc">Reviewed and analyzed data from primary and secondary literature sources across concurrent research studies, synthesizing findings into structured reports and data summaries. Applied institutional SOPs and data protection protocols to all workflows, collaborated with a multidisciplinary team on documentation and compliance matters, and independently managed multiple workstreams to meet study deadlines.</div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-date">2021 – 2022</div>
+      <div>
+        <div class="exp-role">Director for Communications</div>
+        <div class="exp-org">PUP Society of Biology Students, Manila</div>
+        <div class="exp-desc">Led all written communications and correspondence for 200+ student members, achieving a 100% first-draft approval rate with zero factual errors. Managed 100+ official documents in a centralized filing system and trained 3 incoming officers on documentation standards, reducing onboarding time by 30%.</div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-date">2020 – 2021</div>
+      <div>
+        <div class="exp-role">1st Year Representative</div>
+        <div class="exp-org">PUP Society of Biology Students, Manila</div>
+        <div class="exp-desc">Gathered, verified, and reported concerns from 200+ first-year students to the executive board, maintaining 100% follow-through on all committed action items. Resolved 90% of raised concerns within 1 week through structured stakeholder coordination and follow-up.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <p class="section-label">Education</p>
+
+    <div class="edu-item">
+      <div class="edu-date">2020 – 2024</div>
+      <div>
+        <div class="edu-degree">Bachelor of Science in Biology — President's Lister</div>
+        <div class="edu-school">Polytechnic University of the Philippines, Sta. Mesa, Manila</div>
+        <div class="edu-detail">Relevant Coursework: Microbiology, Research Ethics, Biostatistics, Research Methods, Technical & Scientific Writing</div>
+      </div>
+    </div>
+
+    <div class="edu-item">
+      <div class="edu-date">2014 – 2020</div>
+      <div>
+        <div class="edu-degree">Science, Technology, Engineering, and Mathematics — High Honors</div>
+        <div class="edu-school">Alcantara National High School, Alcantara, Romblon</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <p class="section-label">Skills</p>
+    <div class="skills-grid">
+      <div>
+        <div class="skill-group-label">Technical Skills</div>
+        <div class="skill-pills">
+          <span class="skill-pill">ESG Research & Analysis</span>
+          <span class="skill-pill">CSRD / ESRS</span>
+          <span class="skill-pill">GRI Standards</span>
+          <span class="skill-pill">UN SDGs</span>
+          <span class="skill-pill">Data Validation & QA</span>
+          <span class="skill-pill">Literature Review</span>
+          <span class="skill-pill">Scientific Writing</span>
+          <span class="skill-pill">Source Document Review</span>
+          <span class="skill-pill">Biostatistics</span>
+          <span class="skill-pill">MS Office 365</span>
+          <span class="skill-pill">Google Workspace</span>
+          <span class="skill-pill">SharePoint</span>
+          <span class="skill-pill">Database Management</span>
+        </div>
+      </div>
+      <div>
+        <div class="skill-group-label">Core Competencies</div>
+        <div class="skill-pills">
+          <span class="skill-pill">Analytical Thinking</span>
+          <span class="skill-pill">Attention to Detail</span>
+          <span class="skill-pill">Stakeholder Engagement</span>
+          <span class="skill-pill">Report Writing</span>
+          <span class="skill-pill">Regulatory Compliance</span>
+          <span class="skill-pill">Process Improvement</span>
+          <span class="skill-pill">Cross-functional Collaboration</span>
+          <span class="skill-pill">Time Management</span>
+          <span class="skill-pill">Data Privacy & Confidentiality</span>
+          <span class="skill-pill">Independent Work</span>
+          <span class="skill-pill">Continuous Learning</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-bar">
+      <div class="contact-left">
+        <h3>Let's connect.</h3>
+        <p>Open to ESG research, stewardship, and sustainability roles.</p>
+      </div>
+      <div class="contact-links">
+        <a class="contact-link" href="mailto:emiljosephmagracia@gmail.com">emiljosephmagracia@gmail.com</a>
+        <a class="contact-link" href="https://linkedin.com/in/emiljosephmagracia" target="_blank">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>© 2025 Emil Joseph G. Magracia &nbsp;·&nbsp; Sampaloc, Manila &nbsp;·&nbsp; 09082672475</footer>
+
+</body>
+</html>
